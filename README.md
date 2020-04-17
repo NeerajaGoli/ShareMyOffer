@@ -1,4 +1,7 @@
-
+<a  href="https://www.twilio.com">
+<img  src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg"  alt="Twilio"  width="250"  />
+</a>
+ 
 # ShareMyOffer
 
 
@@ -25,7 +28,7 @@ ShareMyOffer is a web application that allows users to post offers that they com
 - Notifications to the user on offer acceptance through Twilio SMS API.
 
 
-##TechStack 
+## TechStack 
 
 - Back-End : spring boot
 - Front-End : Thymeleaf, HTML, CSS, JavaScripit
