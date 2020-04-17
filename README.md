@@ -13,11 +13,14 @@ Communication between the users who are interested in an offer
 Provision to notify the user when others agree to grab the offer together
 
 Features
+
 Share offers with others
 Connect with people around and shop with them
 Simple UI to view list of available offers
 SMS alerts to the user on offer acceptance
+
 How to Use
+
 
 Setup
 
