@@ -1,4 +1,3 @@
-
 # ShareMyOffer
 
 
@@ -27,8 +26,8 @@ ShareMyOffer is a web application that allows users to post offers that they com
 
 ## TechStack 
 
-- Back-End : spring boot
-- Front-End : Thymeleaf, HTML, CSS, JavaScripit
+- Back-End : Spring boot
+- Front-End : Thymeleaf, HTML, CSS, JavaScript
 - Database : MySQL
 - Notifications : Twilio SMS API
 - Location : Google Maps API
