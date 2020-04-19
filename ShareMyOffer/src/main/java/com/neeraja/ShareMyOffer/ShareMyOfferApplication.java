@@ -1,4 +1,4 @@
-package com.hackathon.ShareMyOffer;
+package com.neeraja.ShareMyOffer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
