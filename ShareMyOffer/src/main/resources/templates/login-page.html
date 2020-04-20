@@ -14,8 +14,9 @@
 	</div>
 	<div class = "right">
 		<h4 class="heading">Welcome!</h4>
-		<form action="#" th:action="@{/shareMyOffer/home}"
-						 th:object=${user} method="POST">
+		<form action="#" th:action="@{/shareMyOffer/validate}"
+						 th:object=${login} method="POST">
+			<p th:if="${noMatch}" class="error">Invalid Credentials!</p>
 			<input type="text" placeholder="Enter Username" class="form-control mb-4 col-4"
 							   id="username" name="username" />
 			<input type="password" placeholder="Enter Password" class="form-control mb-4 col-4"

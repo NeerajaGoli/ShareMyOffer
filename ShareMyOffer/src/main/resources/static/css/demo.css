@@ -11,3 +11,7 @@
 .right {
 	grid-area: right;
 }
+
+.error {
+	color: red;
+}
