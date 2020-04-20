@@ -17,12 +17,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Offer")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Offer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,32 +30,28 @@ public class User {
 	private int id;
 	
 	@NotNull(message = "is required")
-	@Column(name = "FirstName")
-	private String firstName;
+	@Column(name = "Name")
+	private String name;
 	
 	@NotNull(message = "is required")
-	@Column(name = "LastName")
-	private String lastName;
+	@Column(name = "Description")
+	private String description;
 	
 	@NotNull(message = "is required")
-	@Column(name = "DateOfBirth")
-	private String dateOfBirth;
+	@Column(name = "Date")
+	private String date;
 	
 	@NotNull(message = "is required")
-	@Column(name = "MobileNumber")
-	private String mobileNumber;
-	
-	@NotNull(message = "is required")
-	@Column(name = "EmailId")
-	private String email;
-	
-	@NotNull(message = "is required")
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinColumn(name = "AddressId")
 	private Address address;
 	
 	@NotNull(message = "is required")
-	@Column(name = "Rating")
-	private int rating;
+	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinColumn(name = "UserId")
+	private User user;
 	
+	@NotNull(message = "is required")
+	@Column(name = "Status")
+	private String status;
 }

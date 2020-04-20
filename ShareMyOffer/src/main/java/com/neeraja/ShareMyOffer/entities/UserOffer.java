@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -17,45 +17,31 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "User")
+@Table(name = "User_Offer")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
+public class UserOffer {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private int id;
 	
 	@NotNull(message = "is required")
-	@Column(name = "FirstName")
-	private String firstName;
+	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinColumn(name = "UserId")
+	private User user;
 	
 	@NotNull(message = "is required")
-	@Column(name = "LastName")
-	private String lastName;
+	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinColumn(name = "OfferId")
+	private Offer offer;
 	
 	@NotNull(message = "is required")
-	@Column(name = "DateOfBirth")
-	private String dateOfBirth;
-	
-	@NotNull(message = "is required")
-	@Column(name = "MobileNumber")
-	private String mobileNumber;
-	
-	@NotNull(message = "is required")
-	@Column(name = "EmailId")
-	private String email;
-	
-	@NotNull(message = "is required")
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "AddressId")
-	private Address address;
-	
-	@NotNull(message = "is required")
-	@Column(name = "Rating")
-	private int rating;
+	@Column(name = "Status")
+	private String status;
 	
 }
