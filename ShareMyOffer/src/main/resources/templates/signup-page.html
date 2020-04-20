@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<div class="bg">
+		<img th:src="@{/images/bg2.jpeg}" alt="background2">
+	</div>
+	<div class="signUp">
+		<h1>Welcome to Share your Offers</h1>
+		<p>Website shows list of offers posted by users.</p>
+		<form action="">
+			<table>
+				<tbody>
+					<tr>
+						<td>First Name</td>
+						<td>Last Name</td>
+					</tr>
+					<tr>
+						<td><input type="text" name="first_name"></td>
+						<td><input type="text" name="last_name"></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>Phone</td>
+					</tr>
+					<tr>
+						<td><input type="text" name="email"></td>
+						<td><input type="text" name="phone"></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td>Confirm Password</td>
+					</tr>
+					<tr>
+						<td><input type="password" name="password"></td>
+						<td><input type="password" name="confirm_password"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Sign Up"></td>
+					</tr>
+				
+				</tbody>
+			</table>
+		</form>
+		<p>Already have an account?<a href="login-page.html">Sign in</a></p>
+	</div>
+	
+</body>
+</html>
