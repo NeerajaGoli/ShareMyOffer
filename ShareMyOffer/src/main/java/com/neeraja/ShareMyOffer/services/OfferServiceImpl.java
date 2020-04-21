@@ -34,15 +34,15 @@ public class OfferServiceImpl implements OfferService {
 	}
 
 	@Override
-	public void save(Offer theOffer) {
+	public Offer save(Offer theOffer) {
 		offerRepository.save(theOffer);
-
+		return theOffer;
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public boolean deleteById(int id) {
 		offerRepository.deleteById(id);
-
+		return true;
 	}
 
 }

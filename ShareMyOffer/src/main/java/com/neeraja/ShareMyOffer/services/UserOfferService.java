@@ -6,12 +6,12 @@ import com.neeraja.ShareMyOffer.entities.UserOffer;
 
 public interface UserOfferService {
 
-	public List<UserOffer> findAll();
+	List<UserOffer> findAll();
 
-	public UserOffer findById(int id);
+	UserOffer findById(int id);
 
-	public void save(UserOffer theUserOffer);
+	UserOffer save(UserOffer theUserOffer);
 
-	public void deleteById(int id);
+	boolean deleteById(int id);
 	
 }

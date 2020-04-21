@@ -22,57 +22,5 @@ import com.neeraja.ShareMyOffer.entities.Role;
 @Service
 public class AuthServiceImpl implements AuthService {
 	
-	private static Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
 	
-	@Autowired
-	private LoginRepository loginRepository;
-
-	@Override
-	@Transactional
-	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		Optional<Login> result = loginRepository.findById(userName);
-		logger.info(result.toString());
-		Login login = null;
-		if (result.isPresent() == false) {
-			throw new UsernameNotFoundException("Invalid username / password.");
-		}
-		login = result.get();
-		return new org.springframework.security.core.userdetails.User(login.getUserName(), login.getPassword(),
-				mapRolesToAuthorities(login.getRoles()));
-	}
-	
-	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getRoleName())).collect(Collectors.toList());
-	}
-
-	@Override
-	public List<Login> findAll() {
-		return loginRepository.findAll();
-	}
-
-	@Override
-	public Login findById(String userName) {
-		Optional<Login> result = loginRepository.findById(userName);
-		Login login = null;
-		if(result.isPresent()) {
-			login = result.get();
-		}
-		else {
-			throw new RuntimeException("Did not find a user");
-		}
-		return login;
-	}
-
-	@Override
-	public void save(Login theLogin) {
-		loginRepository.save(theLogin);
-		
-	}
-
-	@Override
-	public void deleteById(String userName) {
-		loginRepository.deleteById(userName);
-		
-	}
-
 }

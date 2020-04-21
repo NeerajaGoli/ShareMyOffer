@@ -1,13 +1,18 @@
 package com.neeraja.ShareMyOffer.entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -17,7 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Offer")
+@Table(name = "offer")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,32 +31,34 @@ public class Offer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
+	@Column(name = "id")
 	private int id;
 	
 	@NotNull(message = "is required")
-	@Column(name = "Name")
+	@Column(name = "name")
 	private String name;
 	
 	@NotNull(message = "is required")
-	@Column(name = "Description")
+	@Column(name = "description")
 	private String description;
 	
 	@NotNull(message = "is required")
-	@Column(name = "Date")
+	@Column(name = "date_of_post")
 	private String date;
 	
 	@NotNull(message = "is required")
-	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumn(name = "AddressId")
-	private Address address;
-	
-	@NotNull(message = "is required")
-	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumn(name = "UserId")
-	private User user;
-	
-	@NotNull(message = "is required")
-	@Column(name = "Status")
+	@Column(name = "status")
 	private String status;
+	
+	@OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	private List<UserOffer> userOffers;
+	
+//	@NotNull(message = "is required")
+//	@ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+//	@JoinTable(name = "user_offer",
+//	joinColumns = @JoinColumn(name = "offer_id"),
+//	inverseJoinColumns = @JoinColumn(name = "user_id"))
+//	private List<User> users;
+	
+	
 }

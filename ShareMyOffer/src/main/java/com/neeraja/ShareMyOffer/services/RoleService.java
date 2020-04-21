@@ -6,12 +6,12 @@ import com.neeraja.ShareMyOffer.entities.Role;
 
 public interface RoleService {
 	
-	public List<Role> findAll();
+	List<Role> findAll();
 
-	public Role findById(int id);
+	Role findById(int id);
 
-	public void save(Role theRole);
+	Role save(Role theRole);
 
-	public void deleteById(int id);
+	boolean deleteById(int id);
 
 }

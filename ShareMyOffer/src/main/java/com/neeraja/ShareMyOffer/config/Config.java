@@ -1,5 +1,6 @@
 package com.neeraja.ShareMyOffer.config;
 
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.neeraja.ShareMyOffer.services.AuthService;
+import com.neeraja.ShareMyOffer.services.LoginService;
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +23,7 @@ private static Logger logger = LoggerFactory.getLogger(Config.class);
 	
 	// add a reference to our security data source
 	@Autowired
-    private AuthService authService;
+    private LoginService loginService;
 		
 	@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -36,7 +37,8 @@ private static Logger logger = LoggerFactory.getLogger(Config.class);
 		logger.info("------------------> In httpsecurity");
 		http.authorizeRequests()
 			.antMatchers("/home").hasRole("USER")
-			.anyRequest().fullyAuthenticated()
+			.antMatchers("/signup/showMySignUpPage").permitAll()
+//			.anyRequest().fullyAuthenticated()
 			.and()
 			.formLogin()
 				.loginPage("/login/showMyLoginPage")
@@ -60,9 +62,15 @@ private static Logger logger = LoggerFactory.getLogger(Config.class);
 	public DaoAuthenticationProvider authenticationProvider() {
 		logger.info("-------------> In dap authentication provider");
 		DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-		auth.setUserDetailsService(authService); //set the custom user details service
+		auth.setUserDetailsService(loginService); //set the custom user details service
 		auth.setPasswordEncoder(passwordEncoder()); //set the password encoder - bcrypt
 		return auth;
 	}
+	
+	@Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper;
+    }
 	
 }

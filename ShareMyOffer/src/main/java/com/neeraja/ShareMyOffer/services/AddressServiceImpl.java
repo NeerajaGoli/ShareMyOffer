@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.neeraja.ShareMyOffer.dao.AddressRepository;
 import com.neeraja.ShareMyOffer.entities.Address;
+import com.neeraja.ShareMyOffer.entities.Offer;
+import com.neeraja.ShareMyOffer.entities.User;
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -34,15 +36,25 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public void save(Address theAddress) {
+	public Address save(Address theAddress) {
 		addressRepository.save(theAddress);
-
+		return theAddress;
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public boolean deleteById(int id) {
 		addressRepository.deleteById(id);
+		return true;
+	}
 
+	@Override
+	public Address findByUser(User user) {
+		return addressRepository.findByUser(user);
+	}
+
+	@Override
+	public Address findByOffer(Offer offer) {
+		return addressRepository.findByOffer(offer);
 	}
 
 }

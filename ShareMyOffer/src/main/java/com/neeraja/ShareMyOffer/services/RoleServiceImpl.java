@@ -34,15 +34,15 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public void save(Role theRole) {
+	public Role save(Role theRole) {
 		roleRepository.save(theRole);
-
+		return theRole;
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public boolean deleteById(int id) {
 		roleRepository.deleteById(id);
-
+		return true;
 	}
 
 }

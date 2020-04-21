@@ -3,15 +3,21 @@ package com.neeraja.ShareMyOffer.services;
 import java.util.List;
 
 import com.neeraja.ShareMyOffer.entities.Address;
+import com.neeraja.ShareMyOffer.entities.Offer;
+import com.neeraja.ShareMyOffer.entities.User;
 
 public interface AddressService {
 	
-	public List<Address> findAll();
+	List<Address> findAll();
 
-	public Address findById(int id);
+	Address findById(int id);
 
-	public void save(Address theAddress);
+	Address save(Address theAddress);
 
-	public void deleteById(int id);
+	boolean deleteById(int id);
+	
+	Address findByUser(User user);
+	
+	Address findByOffer(Offer offer);
 
 }

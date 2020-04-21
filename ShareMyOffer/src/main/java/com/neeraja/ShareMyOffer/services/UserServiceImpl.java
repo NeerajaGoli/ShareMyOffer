@@ -34,15 +34,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void save(User theUser) {
+	public User save(User theUser) {
 		userRepository.save(theUser);
-		
+		return theUser;
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public boolean deleteById(int id) {
 		userRepository.deleteById(id);
-		
+		return true;
 	}
 
 }

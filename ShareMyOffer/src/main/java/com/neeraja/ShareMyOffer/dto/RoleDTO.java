@@ -2,7 +2,7 @@ package com.neeraja.ShareMyOffer.dto;
 
 import java.util.List;
 
-import com.neeraja.ShareMyOffer.entities.Role;
+import com.neeraja.ShareMyOffer.entities.Login;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,12 +11,12 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class LoginDTO {
+public class RoleDTO {
 	
-	private String userName;
+	private int id;
 	
-	private String password;
+	private String roleName;
 	
-	private List<Role> roles;
+	private List<Login> logins;
 
 }

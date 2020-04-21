@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "User_Offer")
+@Table(name = "user_offer")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,21 +27,21 @@ public class UserOffer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
+	@Column(name = "id")
 	private int id;
 	
 	@NotNull(message = "is required")
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumn(name = "UserId")
+	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@NotNull(message = "is required")
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumn(name = "OfferId")
+	@JoinColumn(name = "offer_id")
 	private Offer offer;
 	
 	@NotNull(message = "is required")
-	@Column(name = "Status")
-	private String status;
+	@Column(name = "purpose")
+	private String purpose;
 	
 }

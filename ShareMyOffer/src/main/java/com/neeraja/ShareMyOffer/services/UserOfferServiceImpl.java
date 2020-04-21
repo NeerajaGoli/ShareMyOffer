@@ -34,15 +34,15 @@ public class UserOfferServiceImpl implements UserOfferService {
 	}
 
 	@Override
-	public void save(UserOffer theUserOffer) {
+	public UserOffer save(UserOffer theUserOffer) {
 		userOfferRepository.save(theUserOffer);
-
+		return theUserOffer;
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public boolean deleteById(int id) {
 		userOfferRepository.deleteById(id);
-
+		return true;
 	}
 
 }
