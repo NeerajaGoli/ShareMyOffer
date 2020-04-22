@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoginDTO {
 	
-	private String username;
+	private String phone;
 	
 	private String password;
 	
@@ -13,21 +13,21 @@ public class LoginDTO {
 		
 	}
 	
-	public LoginDTO(String username,String password) {
-		this.username = username;
+	public LoginDTO(String phone,String password) {
+		this.phone = phone;
 		this.password = password;
 	}
 	
-	public String getUsername() {
-		return username;
+	public String getPhone() {
+		return phone;
 	}
 	
 	public String getPassword() {
 		return password;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setphone(String phone) {
+		this.phone = phone;
 	}
 	
 	public void setPassword(String password) {

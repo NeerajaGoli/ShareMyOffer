@@ -13,23 +13,28 @@ import com.neeraja.ShareMyOffer.dto.LoginDTO;
 @RequestMapping("/shareMyOffer")
 public class AuthController {
 
-	LoginDTO tempLogin = new LoginDTO();
+	LoginDTO tempLogin = new LoginDTO("srivathsa","srivathsa@123");
 	
 	@GetMapping("/login")
 	public String loginPage() {
 		return "login-page";
 	}
 	
-	@PostMapping("/validate")
-	public String validate(@ModelAttribute("login")LoginDTO login,Model model) {
-		tempLogin.setUsername("srivathsa");
-		tempLogin.setPassword("srivathsa@123");
-		if(tempLogin.getUsername().equals(login.getUsername()) && tempLogin.getPassword().equals(login.getPassword())) {
-			model.addAttribute("login",tempLogin);
-			return "home-page";
+	@PostMapping("/validateUser")
+	public String validateUser(@ModelAttribute("login")LoginDTO login,Model model) {
+		if(tempLogin.getPhone().equals(login.getPhone())&&tempLogin.getPassword().equals(login.getPassword())) {
+			model.addAttribute("login",new LoginDTO());
+			return "redirect:/shareMyOffer/home";
 		}
-		model.addAttribute("noMatch",true);
-		return "login-page";
+		else {
+			model.addAttribute("err",true);
+			return "login-page";
+		}
+	}
+	
+	@GetMapping("/home")
+	public String homePage() {
+		return "home-page";
 	}
 
 }
