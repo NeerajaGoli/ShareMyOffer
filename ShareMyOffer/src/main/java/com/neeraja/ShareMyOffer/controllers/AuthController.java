@@ -23,7 +23,6 @@ public class AuthController {
 	@PostMapping("/validateUser")
 	public String validateUser(@ModelAttribute("login")LoginDTO login,Model model) {
 		if(tempLogin.getPhone().equals(login.getPhone())&&tempLogin.getPassword().equals(login.getPassword())) {
-			model.addAttribute("login",new LoginDTO());
 			return "redirect:/shareMyOffer/home";
 		}
 		else {
