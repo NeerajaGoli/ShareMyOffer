@@ -9,12 +9,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "address")
@@ -22,6 +22,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Address {
 	
 	@Id
@@ -29,10 +30,12 @@ public class Address {
 	@Column(name = "address_id")
 	private int id;
 	
+	@ToString.Exclude
 	@OneToOne
 	@JoinColumn(unique = true, name = "user_id")
 	private User user;
 	
+	@ToString.Exclude
 	@OneToOne
 	@JoinColumn(unique = true, name = "offer_id")
 	private Offer offer;
@@ -65,16 +68,13 @@ public class Address {
 	@Column(name = "pincode")
 	private int pinCode;
 	
-	@Null
 	@Column(name = "latitude")
 	private double latitude;
 	
-	@Null
 	@Column(name = "longitude")
 	private double longitude;
 	
-	public Address(int id, String houseNumber,String landMark,String street,String city,String state,String country,int pincode,double latitude,double longitude,User user) {
-		this.id = id;
+	public Address(String houseNumber,String landMark,String street,String city,String state,String country,int pincode,double latitude,double longitude,User user) {
 		this.houseNumber = houseNumber;
 		this.landMark = landMark;
 		this.street = street;
@@ -87,8 +87,7 @@ public class Address {
 		this.user = user;
 	}
 	
-	public Address(int id, String houseNumber,String landMark,String street,String city,String state,String country,int pincode,double latitude,double longitude,Offer offer) {
-		this.id = id;
+	public Address(String houseNumber,String landMark,String street,String city,String state,String country,int pincode,double latitude,double longitude,Offer offer) {
 		this.houseNumber = houseNumber;
 		this.landMark = landMark;
 		this.street = street;

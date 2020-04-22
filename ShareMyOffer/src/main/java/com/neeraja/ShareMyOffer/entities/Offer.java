@@ -53,12 +53,5 @@ public class Offer {
 	@OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private List<UserOffer> userOffers;
 	
-//	@NotNull(message = "is required")
-//	@ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-//	@JoinTable(name = "user_offer",
-//	joinColumns = @JoinColumn(name = "offer_id"),
-//	inverseJoinColumns = @JoinColumn(name = "user_id"))
-//	private List<User> users;
-	
 	
 }

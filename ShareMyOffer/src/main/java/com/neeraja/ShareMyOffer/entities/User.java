@@ -9,9 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -61,21 +58,4 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private List<UserOffer> userOffers;
 
-	public User(int id,String firstName, String lastName, String dateOfBirth, String mobileNumber, String email, double rating) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
-		this.mobileNumber = mobileNumber;
-		this.email = email;
-		this.rating = rating;
-	}
-	
-//	@NotNull(message = "is required")
-//	@ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-//	@JoinTable(name = "user_offer",
-//	joinColumns = @JoinColumn(name = "user_id"),
-//	inverseJoinColumns = @JoinColumn(name = "offer_id"))
-//	private List<Offer> offers;
-	
 }
