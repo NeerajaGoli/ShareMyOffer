@@ -27,34 +27,4 @@ public class TwilioProperties
 	private  String serviceSid;
 
 	
-	public String getAccSid() {
-		return accSid;
-	}
-
-
-	public void setAccSid(String accSid) {
-		this.accSid = accSid;
-	}
-
-
-	public String getAuthToken() {
-		return authToken;
-	}
-
-
-	public void setAuthToken(String authToken) {
-		this.authToken = authToken;
-	}
-
-
-	public String getServiceSid() {
-		return serviceSid;
-	}
-
-
-	public void setServiceSid(String serviceSid) {
-		this.serviceSid = serviceSid;
-	}
-
-	
 }

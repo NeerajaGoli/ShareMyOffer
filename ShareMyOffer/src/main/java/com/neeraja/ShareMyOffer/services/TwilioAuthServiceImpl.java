@@ -12,6 +12,7 @@ import com.twilio.Twilio;
 
 import com.twilio.rest.verify.v2.service.Verification;
 import com.twilio.rest.verify.v2.service.VerificationCheck;
+import com.twilio.exception.ApiException;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +24,14 @@ import lombok.extern.slf4j.Slf4j;
 public class TwilioAuthServiceImpl implements AuthService
 {
 	
-	@Autowired
-	TwilioProperties twilioProps;
 	
-	Logger log=LoggerFactory.getLogger(TwilioAuthServiceImpl.class);
+	private TwilioProperties twilioProps;
+	
+	public TwilioAuthServiceImpl(TwilioProperties twilioProps)
+	{
+		this.twilioProps=twilioProps;
+	}
+	
 
 	
 	@Override
@@ -42,9 +47,9 @@ public class TwilioAuthServiceImpl implements AuthService
 	        return true;
 	      }
 	      
-	     catch(Exception exception)
+	     catch(ApiException exception)
 	     {
-	    	 log.info("Couldn't send Otp to the number");
+	    	  log.info("Invalid phone number");
 	    	  return false;
 	     }
 		
@@ -67,7 +72,7 @@ public class TwilioAuthServiceImpl implements AuthService
         	log.info("Otp verified successfully");
         	
         	return true;
-		}
+	}
         else
         {
         	log.info("Invalid otp entered");
