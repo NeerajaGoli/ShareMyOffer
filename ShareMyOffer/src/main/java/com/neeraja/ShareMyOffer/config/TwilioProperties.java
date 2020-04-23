@@ -12,18 +12,12 @@ import lombok.Setter;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix="twilio")
-@PropertySource("classpath:application.properties")
 public class TwilioProperties 
 {
 
-	@Value("${twilio.accSid}")
+	
 	private  String accSid;
-	
-	@Value("${twilio.authToken}")
 	private  String authToken;
-
-	
-	@Value("${twilio.serviceSid}")
 	private  String serviceSid;
 
 	
