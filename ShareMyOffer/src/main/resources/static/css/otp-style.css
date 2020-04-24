@@ -81,7 +81,8 @@ a:hover
 }
 
 .verify p{
-	text-align: center;
+	
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 12px;
+	padding: 0px 5px 0px 5px;
 }

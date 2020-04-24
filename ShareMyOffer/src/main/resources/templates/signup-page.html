@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Login</title>
+	<title>SignUp</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 
@@ -10,14 +10,14 @@
 	<div class="sign-up-box">
         <h1>Create Account Now!!</h1>
             <form action="#" th:action="@{/shareMyOffer/otp}"
-						 th:object=${signup} onSubmit="return passMatch()">
+						  onSubmit="return passMatch()">
 				<p th:if="${noMatch}" class="error">Already Registered!</p>
             	
             	<table class="table">
             		<tr>
             			<td><label for="firstname">First Name <sup>*</sup></label></td>
             			<td><input type="text" name="firstname" id="firstname" 
-            					   placeholder="Enter first name" autofocus="autofocus" required></td>
+            					   placeholder="Enter first name" autofocus="autofocus"  required></td>
 
             			<td><label for="lastname">Last Name <sup>*</sup></label></td>
             			<td><input type="text" name="lastname" id="lastname" 
