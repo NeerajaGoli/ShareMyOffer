@@ -9,8 +9,5 @@ import com.neeraja.ShareMyOffer.entities.User;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Integer> {
-	
-	Address findByUser(User user);
-	Address findByOffer(Offer offer);
 
 }

@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.neeraja.ShareMyOffer.dao.UserRepository;
+import com.neeraja.ShareMyOffer.entities.Address;
 import com.neeraja.ShareMyOffer.entities.User;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,8 @@ public class UserRepositoryTests {
 	private User user1;
 
 	private User user2;
+	
+	private Address address;
 
 	@Before
 	public void testSetUp() {
@@ -47,6 +50,20 @@ public class UserRepositoryTests {
 		user2.setMobileNumber("7013450459");
 		user2.setEmail("def@gmail.com");
 		user2.setRating(3.5);
+		
+		address = new Address();
+		address.setHouseNumber("12-1-449/2");
+		address.setLandMark("temple");
+		address.setStreet("Lalapet");
+		address.setCity("Secunderabad");
+		address.setState("Telangana");
+		address.setCountry("India");
+		address.setPinCode(500027);
+		address.setLatitude(1.23);
+		address.setLongitude(3.4);
+		
+		user1.setAddress(address);
+		user2.setAddress(address);
 	}
 
 	@Test

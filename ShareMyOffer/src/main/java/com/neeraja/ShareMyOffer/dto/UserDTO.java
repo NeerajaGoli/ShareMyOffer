@@ -2,6 +2,7 @@ package com.neeraja.ShareMyOffer.dto;
 
 import java.util.List;
 
+import com.neeraja.ShareMyOffer.entities.Address;
 import com.neeraja.ShareMyOffer.entities.Offer;
 
 import lombok.Getter;
@@ -26,6 +27,8 @@ public class UserDTO {
 	private String email;
 	
 	private int rating;
+	
+	private Address address;
 	
 	private List<Offer> offers;
 
