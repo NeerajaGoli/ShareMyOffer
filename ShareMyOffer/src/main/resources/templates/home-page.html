@@ -7,16 +7,33 @@
 </head>
 <body>
 
-	<div class="nav" align="center">
-		
-		<a href="#home">Home</a>
-		<a href="#offers">Offers</a>
-		<a href="#about">About Us</a>
-		<a href="#profile">Profile</a>
-	
+	<div class = "nav">
+		<button class="tablink" onclick="openPage('Home', this, 'yellow')" id="defaultOpen">Home</button>
+		<button class="tablink" onclick="openPage('Offers', this, 'yellow')">Offers</button>
+		<button class="tablink" onclick="openPage('About', this, 'yellow')">About Us</button>
+		<button class="tablink" onclick="openPage('Profile', this, 'yellow')">Profile</button>
 	</div>
-	<div id="home">
-	<br>
-	<br>
-		Home Content goes here!!
+	<div id="Home" class="tabcontent">
+		<h3>Home</h3>
+		<p>Home is where we describe our MVP website!</p>
 	</div>
+
+	<div id="Offers" class="tabcontent">
+		<h3>Offers</h3>
+		<p>Some offers this fine day!</p>
+	</div>
+
+	<div id="About" class="tabcontent">
+		<h3>About Us</h3>
+		<p>We describe about us!</p>
+	</div>
+
+	<div id="Profile" class="tabcontent">
+		<h3>Profile</h3>
+		<p>Your profile goes here!</p>
+	</div>
+
+
+	<script src="/scripts/tabs.js"></script>
+</body>
+</html>
