@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Verification</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/css/otp-style.css">
+</head>
+<body>
+	<div class="otp">
+		<h1>OTP Verification</h1>
+		<p>An OTP has been sent to your mobile. Please enter below.</p>
+		<form action="#" th:action="@{/shareMyOffer/login}">
+			<input type="password" name="otp" required maxlength="4" size="10">
+			<br>
+			<input type="submit" name="submit" value="Verify OTP">
+		</form>
+		<br>
+		<div class="verify">
+			<p>Didn't receive any OTP?<a href="#">Resend OTP</a></p>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,5 +1,5 @@
 package com.neeraja.ShareMyOffer.entities;
 
-public class User {
-
+public class User{
+	
 }

@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.neeraja.ShareMyOffer.dto.LoginDTO;
 
+
+
+
 @Controller
 @RequestMapping("/shareMyOffer")
 public class AuthController {
+
 
 	LoginDTO tempLogin = new LoginDTO("srivathsa","srivathsa@123");
 	
@@ -20,20 +24,26 @@ public class AuthController {
 		return "login-page";
 	}
 	
-	@PostMapping("/validateUser")
-	public String validateUser(@ModelAttribute("login")LoginDTO login,Model model) {
-		if(tempLogin.getPhone().equals(login.getPhone())&&tempLogin.getPassword().equals(login.getPassword())) {
-			return "redirect:/shareMyOffer/home";
-		}
-		else {
-			model.addAttribute("err",true);
-			return "login-page";
-		}
-	}
 	
 	@GetMapping("/home")
 	public String homePage() {
 		return "home-page";
+	}
+
+
+	
+	
+		
+	@GetMapping("/signup")
+	public String signupPage() {
+		
+		return "signup-page";
+	}
+	
+	@GetMapping("/otp")
+	public String verifyPage() {
+		
+		return "otp-page";
 	}
 
 }
