@@ -31,5 +31,4 @@ public class UserDTO {
 	private Address address;
 	
 	private List<Offer> offers;
-
 }

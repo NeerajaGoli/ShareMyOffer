@@ -1,5 +1,4 @@
 package com.neeraja.ShareMyOffer.entities;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -18,5 +18,5 @@ public class LoginDTO {
 	private String password;
 	
 	private List<Role> roles;
-
+	
 }

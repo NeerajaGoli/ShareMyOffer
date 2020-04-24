@@ -1,0 +1,44 @@
+body{
+	display: grid;
+	grid-gap: 10px;
+	grid-template-areas: "bg login";
+	grid-template-columns: 1fr 1fr;
+
+
+	
+	border: 1px solid #E2E8E8;
+	margin: 80px 20px;
+    padding: 0px;	
+
+}
+
+.bg{
+	grid-area: bg;
+}
+
+.login{
+	grid-area: login;	
+}
+
+img{
+	width: 100%;
+	height: 100%;	
+}
+
+
+input[type=number]{
+    width: 220px;
+} 
+
+p{
+	font-size: 12px;
+}
+
+td{
+	padding: 5px;
+}
+
+.button{
+	width: 232px;
+}
+
