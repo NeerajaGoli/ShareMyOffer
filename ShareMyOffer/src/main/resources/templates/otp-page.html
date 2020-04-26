@@ -1,24 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Verification</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="/css/otp-style.css">
+<title>Verification</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/otp-style.css">
 </head>
 <body>
 	<div class="otp">
 		<h1>OTP Verification</h1>
 		<p>An OTP has been sent to your mobile. Please enter below.</p>
-		<form action="#" th:action="@{/shareMyOffer/login}">
-			<input type="password" name="otp" required maxlength="4" size="10">
-			<br>
+		<p th:if="${otpErrorMessage}" class="error">Invalid otp!</p>
+		<form th:action="@{/signup/verifyOtp}">
+			<table class="table" style="display:none">
+				<th:block th:object="${user}">
+            		<tr>
+            			<td><input type="hidden" class="input-field" th:field="*{firstName}" required></td>
+            			<td><input type="hidden" class="input-field" th:field="*{lastName}" required></td>
+            		</tr>
+            		<tr>
+            			<td><input type="hidden" class="input-field" th:field="*{email}" required></td>
+		            	<td><input type="hidden" class="input-field" th:field="*{mobileNumber}" required></td>
+            		</tr>
+            		<tr>
+            			<td><input type="hidden" class="input-field" th:field="*{dateOfBirth}" required></td>
+            		</tr>
+            	</th:block>
+				<th:block th:object="${address}">
+					<tr>
+		            	<td><input type="hidden" class="input-field" th:field="*{houseNumber}" required></td>
+            		</tr>
+            		
+            		<tr>
+            			<td><input type="hidden" class="input-field" th:field="*{landMark}" required></td>
+		            	<td><input type="hidden" class="input-field" th:field="*{street}" required></td>
+            		</tr>
+            		<tr>
+            			<td><input type="hidden" class="input-field" th:field="*{city}" required></td >
+		            	<td><input type="hidden" class="input-field" th:field="*{pinCode}" required></td>
+            		</tr>
+            		<tr>
+            			<td><input type="hidden" class="input-field" th:field="*{state}" required></td>
+		            	<td><input type="hidden" class="input-field" th:field="*{country}" required></td>
+            		</tr>
+            		<tr>
+            			<td><input type="hidden" class="input-field" th:field="*{latitude}" required></td>
+            			<td><input type="hidden" class="input-field" th:field="*{longitude}" required></td>
+            		</tr>
+            	</th:block>
+            	<th:block th:object="${login}">
+            		<tr>
+            			<td><input type="hidden" class="input-field" th:field="*{userName}" required></td>
+            			<td><input type="hidden" class="input-field" th:field="*{password}" required></td>
+            		</tr>
+            	</th:block>	
+            	</table>
+				<input type="password" name="otp" id="otp" required> <br>
 			<input type="submit" name="submit" value="Verify OTP">
 		</form>
 		<br>
 		<div class="verify">
-			<p>Didn't receive any OTP?<a href="#">Resend OTP</a></p>
+			<p>
+				Didn't receive any OTP?<a href="otp-page">Resend OTP</a>
+			</p>
 		</div>
 	</div>
-	
+
 </body>
 </html>

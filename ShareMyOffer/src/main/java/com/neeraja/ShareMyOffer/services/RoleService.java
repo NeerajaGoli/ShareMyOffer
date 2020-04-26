@@ -13,5 +13,7 @@ public interface RoleService {
 	Role save(Role theRole);
 
 	boolean deleteById(int id);
+	
+	Role findByRoleName(String roleName);
 
 }

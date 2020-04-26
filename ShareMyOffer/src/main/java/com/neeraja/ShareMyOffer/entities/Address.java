@@ -59,18 +59,18 @@ public class Address {
 	
 	@NotNull(message = "is required")
 	@Column(name = "latitude")
-	private double latitude;
+	private float latitude;
 	
 	@NotNull(message = "is required")
 	@Column(name = "longitude")
-	private double longitude;
+	private float longitude;
 	
-	@OneToOne(mappedBy = "address",cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
-	private User user;
-	
-	@OneToOne(mappedBy = "address",cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
-	private Offer offer;
-	
+//	@OneToOne(mappedBy = "address",cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+//			CascadeType.REFRESH })
+//	private User user;
+//	
+//	@OneToOne(mappedBy = "address",cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+//			CascadeType.REFRESH })
+//	private Offer offer;
+//	
 }

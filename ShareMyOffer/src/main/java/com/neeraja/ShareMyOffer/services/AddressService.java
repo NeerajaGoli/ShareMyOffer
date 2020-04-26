@@ -2,15 +2,15 @@ package com.neeraja.ShareMyOffer.services;
 
 import java.util.List;
 
-import com.neeraja.ShareMyOffer.entities.Address;
+import com.neeraja.ShareMyOffer.dto.AddressDTO;
 
 public interface AddressService {
 	
-	List<Address> findAll();
+	List<AddressDTO> findAll();
 
-	Address findById(int id);
+	AddressDTO findById(int id);
 
-	Address save(Address theAddress);
+	AddressDTO save(AddressDTO theAddressDTO);
 
 	boolean deleteById(int id);
 

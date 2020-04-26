@@ -24,6 +24,9 @@ private static Logger logger = LoggerFactory.getLogger(Config.class);
 	// add a reference to our security data source
 	@Autowired
     private LoginService loginService;
+	
+	@Autowired
+	private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 		
 	@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -35,17 +38,18 @@ private static Logger logger = LoggerFactory.getLogger(Config.class);
 	protected void configure(HttpSecurity http) throws Exception {
 
 		logger.info("------------------> In httpsecurity");
-		http.authorizeRequests()
-			.antMatchers("/home").hasRole("USER")
-			.antMatchers("/signup/showMySignUpPage").permitAll()
-//			.anyRequest().fullyAuthenticated()
+		http.csrf().disable()
+			.authorizeRequests()
+			.antMatchers("/home/").hasRole("USER")
 			.and()
 			.formLogin()
+			.successHandler(customAuthenticationSuccessHandler)
 				.loginPage("/login/showMyLoginPage")
 				.loginProcessingUrl("/authenticateTheUser")
 				.permitAll()
 			.and()
 			.logout()
+			.logoutSuccessUrl("/login/showMyLoginPage")
 			.permitAll()
 			.and()
 			.exceptionHandling().accessDeniedPage("/login/access-denied");

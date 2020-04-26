@@ -1,5 +1,6 @@
 package com.neeraja.ShareMyOffer.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -17,16 +18,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.neeraja.ShareMyOffer.dao.LoginRepository;
+import com.neeraja.ShareMyOffer.dto.LoginDTO;
 import com.neeraja.ShareMyOffer.entities.Login;
 import com.neeraja.ShareMyOffer.entities.Role;
+import com.neeraja.ShareMyOffer.objectMappers.LoginMapper;
 
 @Service
 public class LoginServiceImpl implements LoginService {
 
-	private static Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
+	private static Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 	
 	@Autowired
 	private LoginRepository loginRepository;
+	
+	@Autowired
+	private LoginMapper loginMapper;
 	
 	@Override
 	@Transactional
@@ -47,27 +53,33 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public List<Login> findAll() {
-		return loginRepository.findAll();
+	public List<LoginDTO> findAll() {
+		List<Login> logins = loginRepository.findAll();
+		List<LoginDTO> loginDTO = new ArrayList<LoginDTO>();
+		for(Login login : logins) {
+			loginDTO.add(loginMapper.convertToDto(login));
+		}
+		return loginDTO;
 	}
 
 	@Override
-	public Login findById(String userName) {
-		Optional<Login> result = loginRepository.findById(userName);
-		Login login = null;
-		if(result.isPresent()) {
-			login = result.get();
+	public LoginDTO findById(String userName) {
+		Optional<Login> login = loginRepository.findById(userName);
+		LoginDTO loginDTO = null;
+		if(login.isPresent()) {
+			loginDTO = loginMapper.convertToDto(login.get());
 		}
 		else {
 			throw new RuntimeException("Did not find a user");
 		}
-		return login;
+		return loginDTO;
 	}
 
 	@Override
-	public Login save(Login theLogin) {
-		loginRepository.save(theLogin);
-		return theLogin;
+	public LoginDTO save(LoginDTO theLoginDTO) {
+		Login login = loginMapper.convertToEntity(theLoginDTO);
+		loginRepository.save(login);
+		return theLoginDTO;
 		
 	}
 

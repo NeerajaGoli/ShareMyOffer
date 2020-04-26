@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.neeraja.ShareMyOffer.entities.Login;
+import com.neeraja.ShareMyOffer.dto.LoginDTO;
 
 public interface LoginService extends UserDetailsService {
 	
-	List<Login> findAll();
+	List<LoginDTO> findAll();
 
-	Login findById(String userName);
+	LoginDTO findById(String userName);
 
-	Login save(Login theLogin);
+	LoginDTO save(LoginDTO theLoginDTO);
 
 	boolean deleteById(String userName);
 

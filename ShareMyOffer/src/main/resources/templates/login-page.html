@@ -9,11 +9,12 @@
 <body>
 	<div class="login-box">
         <h1>Welcome!</h1>
-            <form action="#" th:action="@{/shareMyOffer/validateUser}"
+            <form action="#" th:action="@{/authenticateTheUser}"
 						 th:object=${login} method="POST">
+				<p th:if="${param.error}"> Invalid username and password.</p>
 				<p th:if="${err}" class="error">Invalid Credentials!</p>
             	<label for="phone">Phone Number</label>
-            	<input type="text" name="phone" id="phone" 
+            	<input type="text" name="username" id="username" 
             					   placeholder="Enter Phone Number" autofocus="autofocus" required>
             	<label for="password">Password</label>
             	<input type="password" name="password" id="password" 

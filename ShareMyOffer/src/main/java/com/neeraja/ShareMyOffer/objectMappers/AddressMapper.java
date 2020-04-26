@@ -2,10 +2,15 @@ package com.neeraja.ShareMyOffer.objectMappers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.neeraja.ShareMyOffer.dto.AddressDTO;
 import com.neeraja.ShareMyOffer.entities.Address;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Component
 public class AddressMapper {
 	
 	@Autowired
@@ -20,9 +25,10 @@ public class AddressMapper {
 
 
     public Address convertToEntity(AddressDTO theAddressDto){
-
-       Address theAddress=mapper.map(theAddressDto,Address.class);
-        return theAddress;
+       
+    	log.info(theAddressDto.getCity());
+    	Address theAddress=mapper.map(theAddressDto,Address.class);
+    	return theAddress;
 
     }
 

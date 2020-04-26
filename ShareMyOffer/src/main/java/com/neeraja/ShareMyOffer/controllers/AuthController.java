@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/login")
 public class AuthController {
 	
 	private static Logger logger = LoggerFactory.getLogger(AuthController.class);
 	
-	@GetMapping("")
+	@GetMapping("/showMyLoginPage")
 	public String showMyLoginPage() {
 		logger.info("In auth controller");
 		return "login-page";
 	}
 	
-	@GetMapping("access-denied/")
+	@GetMapping("/access-denied")
 	public String showAccessDenied() {
 		return "access-denied";
 	}

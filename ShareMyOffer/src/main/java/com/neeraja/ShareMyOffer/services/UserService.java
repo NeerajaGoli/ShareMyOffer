@@ -2,16 +2,21 @@ package com.neeraja.ShareMyOffer.services;
 
 import java.util.List;
 
-import com.neeraja.ShareMyOffer.entities.User;
+import com.neeraja.ShareMyOffer.dto.AddressDTO;
+import com.neeraja.ShareMyOffer.dto.UserDTO;
 
 public interface UserService {
 
-	List<User> findAll();
+	List<UserDTO> findAll();
 
-	User findById(int id);
+	UserDTO findById(int id);
 
-	User save(User theUser);
+	UserDTO save(UserDTO theUserDTO,AddressDTO theAddressDTO);
 
 	boolean deleteById(int id);
+	
+	boolean isExists(String mobileNumber);
+	
+	UserDTO findByMobileNumber(String mobileNumber);
 	
 }
