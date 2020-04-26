@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>SignUp</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="/script/login.js">
+    </script>
+
+</head>
+<body>
+	<div class="sign-up-box">
+        <h1>Create Account Now!!</h1>
+            <form th:action="@{/signup/processForm}" th:object="${user}"
+						  OnSubmit="return passMatch()" method="POST">
+				<p th:if="${addUserError}" class="error">Already Registered!</p>
+            	
+            	<table class="table">
+            		<tr>
+            			<td><label for="firstName">First Name <sup>*</sup></label></td>
+            			<td><input type="text" th:field="*{firstName}" 
+            					   placeholder="Enter first name" autofocus="autofocus" pattern="[a-zA-Z \.]+" required></td>
+
+            			<td><label for="lastName">Last Name <sup>*</sup></label></td>
+            			<td><input type="text" th:field="*{lastName}" 
+            					   placeholder="Enter last name" autofocus="autofocus" pattern="[a-zA-Z \.]+" required></td>
+            		</tr>
+            		<tr>
+            			<td><label for="email">Email</label></td>
+            			<td><input type="text" th:field="*{email}"
+            					   placeholder="Enter email" autofocus="autofocus" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></td>
+
+            			<td><label for="mobileNumber">Phone Number <sup>*</sup></label></td>
+		            	<td><input type="text" th:field="*{mobileNumber}"  
+            					   placeholder="Enter phone number" autofocus="autofocus" pattern="^[0-9]{10}$" required></td>
+            		</tr>
+            		<tr>
+            			<td><label for="dateOfBirth">Date-Of-Birth</label></td>
+            			<td><input type="date" th:field="*{dateOfBirth}" 
+            					   placeholder="DD/MM/YYYY" autofocus="autofocus" th:errorclass="fieldError"></td>
+				<th:block th:object="${address}">
+            			<td><label for="houseNumber">House No</label></td>
+		            	<td><input type="text" th:field="*{houseNumber}"  
+            					   placeholder="Enter house number" autofocus="autofocus" th:errorclass="fieldError"></td>
+            		</tr>
+            		
+            		<tr>
+            			<td><label for="landMark">LandMark</label></td>
+            			<td><input type="text" name="landMark" id="landMark" 
+            					   placeholder="Enter landmark" pattern="[a-zA-Z \.]+" autofocus="autofocus"></td>
+
+            			<td><label for="street">Street <sup>*</sup></label></td>
+		            	<td><input type="text" name="street" id="street" 
+            					   placeholder="Enter street" pattern="[a-zA-Z \.]+" autofocus="autofocus" required></td>
+            		</tr>
+            		<tr>
+            			<td><label for="city">City <sup>*</sup></label></td>
+            			<td><input type="text" name="city" id="city" 
+            					   placeholder="Enter city" pattern="[a-zA-Z \.]+" autofocus="autofocus" required></td >
+
+            			<td><label for="pinCode">Pincode <sup>*</sup></label></td>
+		            	<td><input type="text" name="pinCode" id="pinCode" 
+            					   placeholder="Enter pincode" pattern="^[0-9]{6}$" autofocus="autofocus" required></td>
+            		</tr>
+            		<tr>
+            			<td><label for="state">State <sup>*</sup></label></td>
+            			<td><input type="text" name="state" id="state" 
+            					   placeholder="Enter state" pattern="[a-zA-Z \.]+" autofocus="autofocus" required></td>
+
+            			<td><label for="country">Country <sup>*</sup></label></td>
+		            	<td><input type="text" name="country" id="country" 
+            					   placeholder="Enter country" pattern="[a-zA-Z \.]+" autofocus="autofocus" required></td>
+            		</tr>
+            		<tr>
+            			<td><input id="latitude" name="latitude" type="text" hidden="true"></td>
+            			<td><input id="longitude" name="longitude" type="text" hidden="true"></td>
+            		</tr>
+            	</th:block>
+            	<th:block th:object="${login}">
+            		<tr>
+            			<td><label for="password">Password <sup>*</sup></label></td>
+            			<td><input type="password" name="password" id="password" 
+            						   placeholder="Enter Password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" autofocus="autofocus" required></td>
+            			
+            			<td><label for="confirm">Confirm Password <sup>*</sup></label></td>
+            			<td><input type="password" name="confirm" id="confirm" 
+            						   placeholder="Enter password again" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,}$" autofocus="autofocus" required></td>
+            			
+            		</tr>
+            	</th:block>	
+            		<tr>
+            			<td><input type="checkbox" id="location" onclick="getLocation()"></td>
+            			<td> Allow locations</td>
+            		</tr>
+            	</table>
+            	<input type="submit" name="submit" value="Sign Up" >
+            
+            </form>
+            <br>
+            <br>
+            <br>
+            <div class = "sign-in">
+            	<p>Already have an account?
+        		<a th:href="@{/login/showMyLoginPage}">Sign in.</a>
+        		</p>
+        	</div>
+        </div>
+        <script>
+        	function passMatch() {
+        		var pass = document.getElementById("password").value;
+        		var pass1 = document.getElementById("confirm").value;
+        		var check = document.getElementById("location");
+        		if(pass!==pass1){
+        			alert("Passwords doesn't match");
+        			return false;
+        		}
+        		if(check.checked==false) {
+        	        document.getElementById('latitude').value='';
+        	        document.getElementById('longitude').value='';
+        	        alert('Please enable the location');
+        	        return false;
+        	    }
+        	}
+        </script>
+</body>
+</html>

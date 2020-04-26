@@ -21,12 +21,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Table(name = "offer")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Offer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,35 +34,28 @@ public class User {
 	private int id;
 	
 	@NotNull(message = "is required")
-	@Column(name = "first_name")
-	private String firstName;
+	@Column(name = "name")
+	private String name;
 	
 	@NotNull(message = "is required")
-	@Column(name = "last_name")
-	private String lastName;
+	@Column(name = "description")
+	private String description;
 	
 	@NotNull(message = "is required")
-	@Column(name = "date_of_birth")
-	private String dateOfBirth;
+	@Column(name = "date_of_post")
+	private String date;
 	
 	@NotNull(message = "is required")
-	@Column(unique = true, name = "mobile_number")
-	private String mobileNumber;
-	
-	@NotNull(message = "is required")
-	@Column(unique = true, name = "email")
-	private String email;
-	
-	@NotNull(message = "is required")
-	@Column(name = "rating")
-	private double rating;
+	@Column(name = "status")
+	private String status;
 	
 	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH })
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private List<UserOffer> userOffers;
-
+	
+	
 }

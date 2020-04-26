@@ -2,9 +2,51 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login Page</title>
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+<script type="text/javascript" th:src="@{js/login.js}"></script>
 </head>
+
 <body>
+
+
+	<div class="login-box">
+        <h1>Welcome!</h1>
+            <form action="#" th:action="@{/shareMyOffer/validateUser}"
+						 th:object=${login} method="POST">
+				<p th:if="${err}" class="error">Invalid Credentials!</p>
+            	<p th:if="${locationError}">Location should be given</p>
+            	<label for="phone">Phone Number</label>
+            	<input type="text" name="phone" id="phone" 
+            					   placeholder="Enter Phone Number" autofocus="autofocus" required>
+            	<label for="password">Password</label>
+            	<input type="password" name="password" id="password" 
+            						   placeholder="Enter Password"autofocus="autofocus" required>  
+            	<table>
+            		<tbody>
+            			<tr>
+            				<td><input type="checkbox" id="location" onclick="getLocation();" /></td>
+            				<td ><label for="location">Allow location</label></td>
+            			<tr>
+            		</tbody>
+            	</table>         	
+            	
+            	<br>
+            	<br>
+            	<input id="latitude" name="latitude" type="text" hidden>
+            	<input id="longitude" name="longitude" type="text" hidden>
+            	<input type="submit" name="submit" value="Login">
+            
+            </form>
+            <br>
+            <br>
+            <div class = "sign-up">
+            	<p>Don't have an account?
+        		<a th:href="@{/signup/showMySignUpPage}">Create Account.</a>
+        		</p>
+        	</div>
+        </div>
+        
 
 </body>
 </html>
