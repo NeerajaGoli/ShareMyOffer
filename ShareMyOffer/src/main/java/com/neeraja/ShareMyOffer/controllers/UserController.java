@@ -34,6 +34,6 @@ public class UserController {
 			return "signup-page";
 		}
 		
-		return "confirmation-page";
+		return "home-page";
 	}
 }

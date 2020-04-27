@@ -34,7 +34,7 @@ public class AuthServiceImpl implements AuthService {
 		}
 
 		catch (ApiException exception) {
-			log.error("Invalid phone Number");
+			log.error("Invalid phone Number "+exception.getMessage());
 			return false;
 		}
 

@@ -60,7 +60,7 @@
 		</form>
 		<br>
 		<div class="resend">
-			<p>Didn't receive any OTP? <a href="#" id="download" class="button" style="display: none"><u>Resend OTP</u></a>
+			<p>Didn't receive any OTP? <a th:href="@{/signup/resend-otp}" id="download" class="button" style="display: none"><u>Resend OTP</u></a>
 			</p>
 		</div>
 	</div>
@@ -82,7 +82,7 @@
 		    } else {
 		        newElement.innerHTML = "Resend OTP in " + counter.toString() + " seconds.";
 		    }
-				}, 30000);
+				}, 60000);
 
 	</script>
 

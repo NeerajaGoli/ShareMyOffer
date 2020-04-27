@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Login Page</title>
@@ -12,7 +12,7 @@
 
 	<div class="login-box">
         <h1>Welcome!</h1>
-            <form action="#" th:action="@{/shareMyOffer/validateUser}"
+            <form action="#" th:action="@{/authenticateTheUser}"
 						 th:object=${login} method="POST">
 				<p th:if="${err}" class="error">Invalid Credentials!</p>
             	<p th:if="${locationError}">Location should be given</p>
