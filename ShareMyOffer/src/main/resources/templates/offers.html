@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Your Offers</title>
     <link rel="stylesheet" href="/css/home-page.css">
+<!--     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
     <script src="/script/home-page.js"></script>
 </head>
 <body>
     <div id="row">
         <div class = "header">
             <ul>
-                <li><a th:href="@{/home/}" class="active">Home</a></li>
-                <li><a th:href="@{/home/yourOffers}">Your Offers</a></li>
+                <li><a th:href="@{/home/}">Home</a></li>
+                <li><a th:href="@{/home/yourOffers}" class="active">Your Offers</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="profile.html">Profile</a></li>
             </ul>
@@ -21,7 +22,14 @@
     <div id="row1">
         <div id="searchMenuDiv">
             <input type="text" id="searchOffer" placeholder="Seach location,offer....." onkeyup="searchOffers()">
+            <br>
+            <button class="btn btn-primary btn-sm mb-3" th:onclick="'javascript:showForm()'">New Post</button>
         </div>
+    </div>
+    <br>
+    <br>
+    <div id="form">
+    	Hello
     </div>
     <div id="row2">
         <div id="myTables">
@@ -32,13 +40,10 @@
                         <p th:text="${offer.getOffer().getDescription()}"></p>
                     </div>
                     <div th:id="${offer.getOffer().getId()}" style="display:none">
-                    	<table style="width:100%">
+                    	<table>
                     		<tr>
                     			<td>Posted By</td>
-                    			<td>
-                    				<span th:text="${offer.getUser().getFirstName()}"></span>&nbsp;
-                    				<span th:text="${offer.getUser().getLastName()}"></span>
-                    			</td>
+                    			<td th:text="${offer.getUser().getFirstName()}"></td>
                     		</tr>
                     		<tr>
                     			<td>Contact Info</td>
@@ -47,19 +52,11 @@
                     		<tr>
                     			<td>Location</td>
                     			<td>
-                    				<span th:text="${offer.getOffer().getAddress().getHouseNumber()}"></span>,
-                    				<span th:text="${offer.getOffer().getAddress().getStreet()}"></span>,
-                    				<span th:text="${offer.getOffer().getAddress().getCity()}"></span>,
-                    				<span th:text="${offer.getOffer().getAddress().getState()}"></span>,
-                    				<span th:text="${offer.getOffer().getAddress().getCountry()}"></span> -
-                    				<span th:text="${offer.getOffer().getAddress().getPinCode()}"></span>
+                    				<span th:text="${offer.getOffer().getAddress().getHouseNumber()}"></span>
+                    				<span th:text="${offer.getOffer().getAddress().getStreet()}"></span>
                     			</td>
                     		</tr>
                     	</table>
-                    	<form th:action="@{/user/acceptOffer}">
-                    		<input type="hidden" name="offerId" th:value="${offer.getOffer().getId()}">
-                    		<input type="submit" name="submit" value="Accept">
-                    	</form>
                     </div>
                 </li>
             </ul>

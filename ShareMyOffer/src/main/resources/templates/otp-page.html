@@ -7,6 +7,27 @@
 <link rel="stylesheet" type="text/css" href="/css/otp-style.css">
 </head>
 <body>
+<script>
+		var downloadButton = document.getElementById("download");
+		var counter = 10;
+		var newElement = document.createElement("p");
+		newElement.innerHTML = "Resend OTP in 10 seconds.";
+		var id;
+
+		downloadButton.parentNode.replaceChild(newElement, downloadButton);
+
+		id = setInterval(function() {
+    counter--;
+    if(counter === 0) {
+        downloadButton.style.display = 'inline';
+        newElement.parentNode.replaceChild(downloadButton, newElement);
+        clearInterval(id);
+    } else {
+        newElement.innerHTML = "Resend OTP in " + counter.toString() + " seconds.";
+    }
+		}, 1000);
+
+	</script>
 	<div class="otp">
 		<h1>OTP Verification</h1>
 		<p>An OTP has been sent to your mobile. Please enter below.</p>
@@ -58,10 +79,8 @@
 				<input type="password" name="otp" id="otp" required> <br>
 			<input type="submit" name="submit" value="Verify OTP">
 		</form>
-		<br>
-		<div class="verify">
-			<p>
-				Didn't receive any OTP?<a href="otp-page">Resend OTP</a>
+		<div class="resend">
+			<p>Didn't receive any OTP? <a th:href="@{/signup/otp}" id="download" class="button">Resend OTP</a>
 			</p>
 		</div>
 	</div>

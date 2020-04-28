@@ -5,13 +5,17 @@ import java.util.List;
 import com.neeraja.ShareMyOffer.entities.Address;
 import com.neeraja.ShareMyOffer.entities.User;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class OfferDTO {
 	
 	private int id;
@@ -26,7 +30,7 @@ public class OfferDTO {
 	
 	private Address address;
 	
-	private List<User> users;
+//	private List<User> users;
 
 
 }

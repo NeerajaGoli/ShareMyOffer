@@ -1,0 +1,102 @@
+.header {
+    background-color: black;
+    border: 1px solid black;
+    margin: auto;
+    width: 100%;
+}
+
+.header ul {
+    text-align: center;
+}
+
+.header li { 
+    display: inline-block;
+    list-style-type: none;
+}
+
+.header a {
+    border: 2px solid white;
+    padding: 10px 10px 10px 10px;
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.header a:hover {
+    background-color: white;
+    color: black;
+}
+
+.header ul li a.active {
+    background-color: white;
+    color: black;
+}
+
+#row {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+}
+
+#row1 {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    margin-top: 70px;
+    justify-content: right;
+}
+
+#form {
+	display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    margin-top: 140px;
+    justify-content: right;
+}
+
+#row2 {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+#myTables {
+    flex: 35%;
+    padding: 15px;
+    float: left;
+    margin-top: 100px;
+}
+
+#myTableContents {
+    list-style-type: none;
+    padding: 10px;
+}
+
+#myTableContents li {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    border: 1px solid #888888;
+    box-shadow: 3px 3px #888888;
+}
+
+input[type=text],input[type="number"],button {
+
+    width: 100%;
+    padding: 12px 20px;
+    margin-left: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}

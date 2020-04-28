@@ -2,15 +2,15 @@ package com.neeraja.ShareMyOffer.services;
 
 import java.util.List;
 
-import com.neeraja.ShareMyOffer.entities.Offer;
+import com.neeraja.ShareMyOffer.dto.OfferDTO;
 
 public interface OfferService {
 
-	List<Offer> findAll();
+	List<OfferDTO> findAll();
 
-	Offer findById(int id);
+	OfferDTO findById(int id);
 
-	Offer save(Offer theOffer);
+	OfferDTO save(OfferDTO theOfferDTO);
 
 	boolean deleteById(int id);
 	

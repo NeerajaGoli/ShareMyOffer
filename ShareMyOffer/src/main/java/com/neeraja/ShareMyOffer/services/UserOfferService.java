@@ -2,16 +2,22 @@ package com.neeraja.ShareMyOffer.services;
 
 import java.util.List;
 
-import com.neeraja.ShareMyOffer.entities.UserOffer;
+import com.neeraja.ShareMyOffer.dto.OfferDTO;
+import com.neeraja.ShareMyOffer.dto.UserDTO;
+import com.neeraja.ShareMyOffer.dto.UserOfferDTO;
 
 public interface UserOfferService {
 
-	List<UserOffer> findAll();
+	List<UserOfferDTO> findAll();
 
-	UserOffer findById(int id);
+	UserOfferDTO findById(int id);
 
-	UserOffer save(UserOffer theUserOffer);
+	UserOfferDTO save(UserDTO theUserDTO,OfferDTO theOfferDTO);
 
 	boolean deleteById(int id);
+	
+	List<UserOfferDTO> findByPurpose(String purpose);
+	
+	List<UserOfferDTO> findByUserAndPurpose(UserDTO userDTO,String purpose);
 	
 }

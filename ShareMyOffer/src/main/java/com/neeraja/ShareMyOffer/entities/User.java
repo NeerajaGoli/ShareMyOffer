@@ -19,6 +19,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "user")
@@ -26,6 +27,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class User {
 
 	@Id
@@ -62,7 +64,7 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	private List<UserOffer> userOffers;
+//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+//	private List<UserOffer> userOffers;
 
 }

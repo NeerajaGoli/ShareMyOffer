@@ -8,13 +8,17 @@ import com.neeraja.ShareMyOffer.entities.Address;
 import com.neeraja.ShareMyOffer.entities.Offer;
 import com.neeraja.ShareMyOffer.validator.ValidEmail;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class UserDTO {
 	
 	@NotNull(message = "is required")
