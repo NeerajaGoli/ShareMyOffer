@@ -1,6 +1,7 @@
 package com.neeraja.ShareMyOffer.controllers;
 
 
+import com.neeraja.ShareMyOffer.dto.LoginDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class AuthController {
 	
 
 
-	LoginDTO tempLogin = new LoginDTO("srivathsa","srivathsa@123");
+
 	
 	@GetMapping("/login")
 	public String loginPage() {

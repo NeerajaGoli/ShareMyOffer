@@ -1,4 +1,4 @@
-
+package com.neeraja.ShareMyOffer.dto;
 
 import java.util.List;
 
