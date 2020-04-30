@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
-<body>
 
+<body>
+	<div class="login-box">
+        <h1>Welcome!</h1>
+            <form action="#" th:action="@{/authenticateTheUser}"
+						 th:object=${login} method="POST">
+				<p th:if="${param.error}" style="color:red"> Invalid username and password.</p>
+				<p th:if="${param.logout}">Successfully logged out!</p>
+            	<label for="phone">Phone Number</label>
+            	<input type="text" name="username" id="phone"
+            					   placeholder="Enter Phone Number" autofocus="autofocus" required>
+            	<label for="password">Password</label>
+            	<input type="password" name="password" id="password" 
+            						   placeholder="Enter Password"autofocus="autofocus" required>
+            	<br><!--<a href="#">Forgot Password?</a><br>-->
+            	<input type="submit" name="submit" value="Login">
+            
+            </form>
+            <br>
+            <br>
+            <div class = "sign-up">
+            	<p>Don't have an account?
+        		<a th:href="@{/signup/showMySignUpPage}">Create Account.</a>
+        		</p>
+        	</div>
+        </div>
 </body>
 </html>
