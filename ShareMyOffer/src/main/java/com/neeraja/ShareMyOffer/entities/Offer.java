@@ -51,13 +51,11 @@ public class Offer {
 	@Column(name = "status")
 	private String status;
 	
-	@OneToOne//(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			//CascadeType.REFRESH })
+	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
-//	@OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-//	private List<UserOffer> userOffers;
+
 	
 	
 }

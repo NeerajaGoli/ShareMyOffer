@@ -65,16 +65,7 @@ public class UserOfferServiceImpl implements UserOfferService {
 	@Override
 	@Transactional
 	public UserOfferDTO save(UserDTO theUserDTO,OfferDTO offerDTO) {
-		/*UserOfferDTO userOfferDTO = new UserOfferDTO();
-		userOfferDTO.setUser(theUserDTO);
-		userOfferDTO.setOffer(offerDTO);
-		userOfferDTO.setPurpose("posted");
-		User user = userMapper.convertToEntity(theUserDTO);
-		Offer offer = offerMapper.convertToEntity(offerDTO);
-		UserOffer userOffer = userOfferMapper.convertToEntity(userOfferDTO);
-		log.info(userOffer.toString());
-		userOfferRepository.save(userOffer);
-		return userOfferDTO;*/
+
 		User user = userMapper.convertToEntity(theUserDTO);
 		Offer offer = offerMapper.convertToEntity(offerDTO);
 		UserOfferDTO userOfferDTO = new UserOfferDTO();

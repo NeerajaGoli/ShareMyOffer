@@ -24,7 +24,7 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public Boolean sendOtp(String mobileNumber) {
-		// TODO Auto-generated method stub
+
 
 		Twilio.init(twilioProps.getAccSid(), twilioProps.getAuthToken());
 		try {
@@ -43,7 +43,7 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public Boolean verifyOtp(String mobileNumber, String Otp) {
-		// TODO Auto-generated method stub
+
 
 		Twilio.init(twilioProps.getAccSid(), twilioProps.getAuthToken());
 		try {

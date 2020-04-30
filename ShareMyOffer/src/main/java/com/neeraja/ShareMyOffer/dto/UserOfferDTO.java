@@ -19,10 +19,10 @@ public class UserOfferDTO {
 	private int id;
 	
 	private User user;
-	//private UserDTO user;
+
 
 	private Offer offer;
-	//private OfferDTO offer;
+
 
 	private String purpose;
 

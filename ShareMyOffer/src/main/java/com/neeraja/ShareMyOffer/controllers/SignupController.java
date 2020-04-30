@@ -126,18 +126,6 @@ public class SignupController {
 	}
 	
 	
-	@RequestMapping("/otp")
-	public String resendOtp(@ModelAttribute("user") UserDTO userDTO,
-							@ModelAttribute("address") AddressDTO addressDTO,
-							@ModelAttribute("login") LoginDTO loginDTO,
-							Model theModel,
-							HttpServletRequest request) {
-		authService.sendOtp("+91"+userDTO.getMobileNumber());
-		loginDTO.setRoles(Arrays.asList(roleService.findByRoleName("ROLE_USER")));
-		theModel.addAttribute("user", userDTO);
-		theModel.addAttribute("address", addressDTO);
-		theModel.addAttribute("login", loginDTO);
-		return "otp-page";
-	}
+
 	
 }

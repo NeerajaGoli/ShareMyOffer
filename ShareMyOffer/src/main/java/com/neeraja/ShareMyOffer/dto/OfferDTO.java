@@ -30,7 +30,7 @@ public class OfferDTO {
 	
 	private Address address;
 	
-//	private List<User> users;
+
 
 
 }

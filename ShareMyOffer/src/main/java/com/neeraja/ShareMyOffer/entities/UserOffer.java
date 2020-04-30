@@ -34,13 +34,13 @@ public class UserOffer {
 	
 	@NotNull(message = "is required")
 	@ManyToOne
-	//(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+
 	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@NotNull(message = "is required")
 	@ManyToOne
-	//(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
 	

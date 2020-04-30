@@ -18,9 +18,15 @@ function searchOffers(){
 		var p = li[i].getElementsByTagName("p");
 		var span = li[i].getElementsByTagName("span");
 		if(h3[0].innerHTML.toUpperCase().indexOf(input) > -1 ||
-		   p[0].innerHTML.toUpperCase().indexOf(input) > -1) {
-			li[i].style.display = "";
-		}
+        		   p[0].innerHTML.toUpperCase().indexOf(input) > -1 ||
+        		   span[0].innerHTML.toUpperCase().indexOf(input) > -1 ||
+        		   span[1].innerHTML.toUpperCase().indexOf(input) > -1 ||
+        		   span[2].innerHTML.toUpperCase().indexOf(input) > -1 ||
+        		   span[3].innerHTML.toUpperCase().indexOf(input) > -1 ||
+        		   span[4].innerHTML.toUpperCase().indexOf(input) > -1 ||
+        		   span[5].innerHTML.toUpperCase().indexOf(input) > -1) {
+        			li[i].style.display = "";
+        		}
 		else {
 			li[i].style.display = "none";
 		}

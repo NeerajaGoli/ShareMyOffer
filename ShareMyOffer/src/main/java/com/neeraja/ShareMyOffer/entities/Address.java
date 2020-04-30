@@ -65,12 +65,5 @@ public class Address {
 	@Column(name = "longitude")
 	private float longitude;
 	
-//	@OneToOne(mappedBy = "address",cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-//			CascadeType.REFRESH })
-//	private User user;
-//	
-//	@OneToOne(mappedBy = "address",cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-//			CascadeType.REFRESH })
-//	private Offer offer;
-//	
+
 }

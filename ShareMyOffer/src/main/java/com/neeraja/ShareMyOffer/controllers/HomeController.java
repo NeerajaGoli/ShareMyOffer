@@ -66,10 +66,7 @@ public class HomeController {
 		return "redirect:/home/yourOffers";
 	}
 
-	@GetMapping("/contact")
-	public String contact() {
-		return "contact";
-	}
+
 
 	@GetMapping("/profile")
 	public String profile(Model theModel,HttpServletRequest request) {
@@ -81,9 +78,6 @@ public class HomeController {
 		return "profile";
 	}
 
-	@GetMapping("/logout")
-	public String logout() {
-		return "redirect:/login/showMyLoginPage";
-	}
+
 
 }

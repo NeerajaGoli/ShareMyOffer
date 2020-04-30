@@ -53,6 +53,10 @@ private static Logger logger = LoggerFactory.getLogger(Config.class);
 			.permitAll()
 			.and()
 			.exceptionHandling().accessDeniedPage("/login/access-denied");
+		http
+				.headers()
+				.frameOptions()
+				.disable();
 		
 	}
 	

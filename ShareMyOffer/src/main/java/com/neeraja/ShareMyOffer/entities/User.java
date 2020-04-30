@@ -64,7 +64,6 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-//	private List<UserOffer> userOffers;
+
 
 }
