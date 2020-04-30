@@ -114,7 +114,7 @@ That's it!
 
 ## License
 
-[Apache License](http://www.apache.org/licenses/LICENSE-2.0)
+[MIT](http://www.opensource.org/licenses/mit-license.html)
 
 ## Disclaimer
 
