@@ -47,7 +47,7 @@ all the config values we need to run the application:
 | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Account&nbsp;Sid  | Your primary Twilio account identifier - find this [in the Console](https://www.twilio.com/console).                                                         |
 | Auth&nbsp;Token   | Used to authenticate - [just like the above, you'll find this here](https://www.twilio.com/console).                                                         |
-| Phone&nbsp;number | A Twilio phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164) - you can [get one here](https://www.twilio.com/console/phone-numbers/incoming) |
+| Service id		| Create a service in the the [twilio verify services](https://www.twilio.com/console/verify/services). |
 
 ### Local Development
 
