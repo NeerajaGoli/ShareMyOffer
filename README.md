@@ -55,9 +55,9 @@ all the config values we need to run the application:
 1. Execute this command in your terminal 
     ```
       export SPRING_APPLICATION_JSON='{"twilio":{
-       "ACCOUNT_SID":"<YOUR_ACCOUNT_SID>" ,
-       "AUTH_TOKEN": "<YOUR_AUTH_TOKEN>",
-       "PATH_SERVICE_SID":"<YOUR_PATH_SERVICE_SID>" 
+       "accSid":"<YOUR_ACCOUNT_SID>" ,
+       "authToken": "<YOUR_AUTH_TOKEN>",
+       "serviceSid":"<SERVICE_SID>" 
        }
       }'
       ```
