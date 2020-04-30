@@ -43,31 +43,8 @@ CREATE TABLE `Address` (
 
 LOCK TABLES `Address` WRITE;
 /*!40000 ALTER TABLE `Address` DISABLE KEYS */;
+INSERT INTO `Address` VALUES (1,'12-1-449/2','Near Shivalayam','Lalapet','Secunderabad','Telangana','India',500017,12.34500000,32.56400000),(2,'12-1-449/2','Near Shivalayam','Lalapet','Secunderabad','Telangana','India',500017,12.34500000,32.56400000);
 /*!40000 ALTER TABLE `Address` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Login`
---
-
-DROP TABLE IF EXISTS `Login`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Login` (
-  `Username` int(10) NOT NULL,
-  `Password` varchar(80) NOT NULL,
-  PRIMARY KEY (`Username`),
-  CONSTRAINT `Login_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `User` (`MobileNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Login`
---
-
-LOCK TABLES `Login` WRITE;
-/*!40000 ALTER TABLE `Login` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Login` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -99,6 +76,7 @@ CREATE TABLE `Offer` (
 
 LOCK TABLES `Offer` WRITE;
 /*!40000 ALTER TABLE `Offer` DISABLE KEYS */;
+INSERT INTO `Offer` VALUES (1,'Sale','offer','2020-04-20',1,1,'Active');
 /*!40000 ALTER TABLE `Offer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +92,7 @@ CREATE TABLE `User` (
   `FirstName` varchar(50) NOT NULL,
   `LastName` varchar(50) NOT NULL,
   `DateOfBirth` date NOT NULL,
-  `MobileNumber` int(10) DEFAULT NULL,
+  `MobileNumber` varchar(10) DEFAULT NULL,
   `EmailId` varchar(60) DEFAULT NULL,
   `AddressId` int(6) DEFAULT NULL,
   `Rating` int(1) DEFAULT NULL,
@@ -134,6 +112,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` VALUES (1,'Vangaru','Shanmukha','1999-06-22','7013450458','vangarushanmukha@gmail.com',1,3),(2,'Shashank','Balabadra','1999-06-22','7013450459','vangarushanmukha12@gmail.com',2,3);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +142,83 @@ CREATE TABLE `User_Offer` (
 
 LOCK TABLES `User_Offer` WRITE;
 /*!40000 ALTER TABLE `User_Offer` DISABLE KEYS */;
+INSERT INTO `User_Offer` VALUES (2,1,'Accepted',1);
 /*!40000 ALTER TABLE `User_Offer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
+  `username` varchar(10) NOT NULL,
+  `password` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login`
+--
+
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES ('7013450458','$2a$10$I9x4UDEMKRR9oMl5EStVIO1WYmpsHVWYscemqFYIh3KBL4/Jr1NIS');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login_roles`
+--
+
+DROP TABLE IF EXISTS `login_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login_roles` (
+  `username` varchar(10) NOT NULL,
+  `role_id` int(2) NOT NULL,
+  PRIMARY KEY (`username`,`role_id`),
+  KEY `role_id` (`role_id`),
+  CONSTRAINT `login_roles_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`Id`),
+  CONSTRAINT `login_roles_ibfk_3` FOREIGN KEY (`username`) REFERENCES `login` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login_roles`
+--
+
+LOCK TABLES `login_roles` WRITE;
+/*!40000 ALTER TABLE `login_roles` DISABLE KEYS */;
+INSERT INTO `login_roles` VALUES ('7013450458',1);
+/*!40000 ALTER TABLE `login_roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role` (
+  `Id` int(2) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'ROLE_USER');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -175,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-19  9:35:13
+-- Dump completed on 2020-04-20 10:16:52

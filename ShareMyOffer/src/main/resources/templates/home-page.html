@@ -1,22 +1,69 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>Home</title>
-	<link href="/css/home.css" type="text/css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/home-page.css">
+    <script src="/script/home-page.js"></script>
 </head>
 <body>
-
-	<div class="nav" align="center">
-		
-		<a href="#home">Home</a>
-		<a href="#offers">Offers</a>
-		<a href="#about">About Us</a>
-		<a href="#profile">Profile</a>
-	
-	</div>
-	<div id="home">
-	<br>
-	<br>
-		Home Content goes here!!
-	</div>
+    <div id="row">
+        <div class = "header">
+            <ul>
+                <li><a th:href="@{/home/}" class="active">Home</a></li>
+                <li><a th:href="@{/home/yourOffers}">Your Offers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="row1">
+        <div id="searchMenuDiv">
+            <input type="text" id="searchOffer" placeholder="Seach location,offer....." onkeyup="searchOffers()">
+        </div>
+    </div>
+    <div id="row2">
+        <div id="myTables">
+            <ul id="myTableContents">
+                <li th:each="offer: ${offers}">
+                    <div th:onclick="'javascript:showDetails(' + ${offer.getOffer().getId()} + ')'">
+                        <h3 th:text="${offer.getOffer().getName()}"></h3>
+                        <p th:text="${offer.getOffer().getDescription()}"></p>
+                    </div>
+                    <div th:id="${offer.getOffer().getId()}" style="display:none">
+                    	<table style="width:100%">
+                    		<tr>
+                    			<td>Posted By</td>
+                    			<td>
+                    				<span th:text="${offer.getUser().getFirstName()}"></span>&nbsp;
+                    				<span th:text="${offer.getUser().getLastName()}"></span>
+                    			</td>
+                    		</tr>
+                    		<tr>
+                    			<td>Contact Info</td>
+                    			<td th:text="${offer.getUser().getMobileNumber()}"></td>
+                    		</tr>
+                    		<tr>
+                    			<td>Location</td>
+                    			<td>
+                    				<span th:text="${offer.getOffer().getAddress().getHouseNumber()}"></span>,
+                    				<span th:text="${offer.getOffer().getAddress().getStreet()}"></span>,
+                    				<span th:text="${offer.getOffer().getAddress().getCity()}"></span>,
+                    				<span th:text="${offer.getOffer().getAddress().getState()}"></span>,
+                    				<span th:text="${offer.getOffer().getAddress().getCountry()}"></span> -
+                    				<span th:text="${offer.getOffer().getAddress().getPinCode()}"></span>
+                    			</td>
+                    		</tr>
+                    	</table>
+                    	<form th:action="@{/user/acceptOffer}">
+                    		<input type="hidden" name="offerId" th:value="${offer.getOffer().getId()}">
+                    		<input type="submit" name="submit" value="Accept">
+                    	</form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
