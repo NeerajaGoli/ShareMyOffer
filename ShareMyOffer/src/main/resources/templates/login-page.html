@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Login</title>
-	<meta charset="UTF-8">
+
+<meta charset="UTF-8">
+<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
+
 <body>
 	<div class="login-box">
         <h1>Welcome!</h1>
-            <form action="#" th:action="@{/shareMyOffer/validateUser}"
+            <form action="#" th:action="@{/authenticateTheUser}"
 						 th:object=${login} method="POST">
-				<p th:if="${err}" class="error">Invalid Credentials!</p>
+				<p th:if="${param.error}" style="color:red"> Invalid username and password.</p>
+				<p th:if="${param.logout}">Successfully logged out!</p>
             	<label for="phone">Phone Number</label>
-            	<input type="text" name="phone" id="phone" 
+            	<input type="text" name="username" id="phone"
+
             					   placeholder="Enter Phone Number" autofocus="autofocus" required>
             	<label for="password">Password</label>
             	<input type="password" name="password" id="password" 
             						   placeholder="Enter Password"autofocus="autofocus" required>
-            	<br><a href="#">Forgot Password?</a><br>
+
+            	<br>
+
             	<input type="submit" name="submit" value="Login">
             
             </form>
@@ -25,7 +31,9 @@
             <br>
             <div class = "sign-up">
             	<p>Don't have an account?
-        		<a th:href="@{/shareMyOffer/signup}">Create Account.</a>
+
+        		<a th:href="@{/signup/showMySignUpPage}">Create Account.</a>
+
         		</p>
         	</div>
         </div>

@@ -1,25 +1,24 @@
 package com.neeraja.ShareMyOffer.dto;
 
-import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+import com.neeraja.ShareMyOffer.entities.Role;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
-@Component
+@Setter
+@Getter
+@NoArgsConstructor
 public class LoginDTO {
 	
-	private String phone;
+	private String userName;
 	
 	private String password;
 	
-	public LoginDTO() {
-		
-	}
-	
-	public LoginDTO(String phone,String password) {
-		this.phone = phone;
-		this.password = password;
-	}
+	private List<Role> roles;
+
 	
 }

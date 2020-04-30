@@ -85,4 +85,16 @@ a:hover
 	font-weight: normal;
 	font-size: 12px;
 	padding: 0px 5px 0px 5px;
+
+}
+
+.resend label{
+	text-align: center;
+}
+
+.error{
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+
 }

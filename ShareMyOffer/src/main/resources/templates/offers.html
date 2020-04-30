@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Offers</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="/script/home-page.js"></script>
+<style>
+
+#row1 {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    margin-top: 70px;
+    justify-content: right;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 40px;
+    left: 0;
+    top: 5%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin-left: 40%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 85%;
+}
+
+.modal-content input[type="text"]{
+    width: 90%;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-content input[type="submit"]{
+    width: 50%;
+    margin-left: 35%;
+    margin-top: 20px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.close {
+    color: #000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(185,0,0);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn {
+	margin-top: 10px;
+	float: left;
+}
+
+
+
+#searchOffer {
+    margin-left: 50%;
+}
+
+
+
+#form {
+	display: flex;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    margin-top: 140px;
+    justify-content: right;
+}
+
+#row2 {
+    margin-top:20px;
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+#myTables {
+    flex: 35%;
+    padding: 15px;
+    float: left;
+    margin-top: 100px;
+}
+
+#myTableContents {
+    list-style-type: none;
+    padding: 10px;
+}
+
+#myTableContents li {
+    margin-bottom: 5px;
+    background-color: #ffff77;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    border: 1px solid #888888;
+    box-shadow: 3px 3px #888888;
+    border-radius: 10px;
+}
+
+input[type=text],input[type="number"]{
+    width: 100%;
+    padding: 12px 20px;
+    margin-left: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgba(0,255,255,0.3);
+}
+
+button {
+    width: 50%;
+    padding: 12px 20px;
+    margin-left: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+</style>
+</head>
+<body>
+<div id="row">
+    <div class = "header">
+        <ul>
+            <li><a th:href="@{/home/}">Home</a></li>
+            <li><a th:href="@{/home/yourOffers}" class="active">Your Offers</a></li>
+            <li><a th:href="@{/home/profile}">Profile</a></li>
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </div>
+</div>
+<div id="row1">
+    <div id="searchMenuDiv" class="search" style="margin-left:30%">
+        <input type="text" id="searchOffer" class="mb-3" placeholder="Seach location,offer....." onkeyup="searchOffers()">
+        <button class="btn btn-primary btn-sm mb-3" id="myBtn" >New Post</button>
+        <br><br>
+    </div>
+</div>
+<br>
+<br>
+<div id="row2">
+    <div id="myTables">
+        <ul id="myTableContents">
+            <li th:each="offer: ${offers}">
+                <div th:onclick="'javascript:showDetails(' + ${offer.getOffer().getId()} + ')'">
+                    <h3 th:text="${offer.getOffer().getName()}"></h3>
+                    <p th:text="${offer.getOffer().getDescription()}"></p>
+                </div>
+                <div th:id="${offer.getOffer().getId()}" style="display:none">
+                    <table>
+                        <tr>
+                            <td>Posted By</td>
+                            <td th:text="${offer.getUser().getFirstName()}"></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Info</td>
+                            <td th:text="${offer.getUser().getMobileNumber()}"></td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>
+                                <span th:text="${offer.getOffer().getAddress().getHouseNumber()}"></span>
+                                <span th:text="${offer.getOffer().getAddress().getStreet()}"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="fields" class = "modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form th:action="@{/home/}"
+              th:object="${offer}" method="POST">
+            <label class="label" for="name">Name</label>
+            <input type="text" placeholder="Name" id="name" th:field="*{name}" required>
+
+            <label class="label" for="description">Description</label>
+            <input type="text" placeholder="Description" id="description" th:field="*{description}" required>
+
+            <label class="label" for="date">Date</label>
+            <input type="text" id="date" placeholder="yyyy-mm-dd" th:field="*{date}" required>
+            <br>
+            <input type="checkbox" id="consent" required>
+            <label for="consent">I agree to show my contact details</label>
+
+            <input type="submit" value="Post" class="btn btn-info col-2">
+        </form>
+
+    </div>
+</div>
+<script>
+        var modal = document.getElementById("fields");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
