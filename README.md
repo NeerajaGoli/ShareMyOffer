@@ -29,7 +29,7 @@ ShareMyOffer is a web application that allows users to post offers that they com
 - Front-End : Thymeleaf, HTML, CSS, JavaScript
 - Database : MySQL
 - Notifications : Twilio SMS API
-- Location : Google Maps API
+
 
 ## Setup
 ### Requirements
