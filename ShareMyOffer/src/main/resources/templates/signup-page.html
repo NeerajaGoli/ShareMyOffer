@@ -4,13 +4,16 @@
 	<title>SignUp</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+
 	<script type="text/javascript" src="/script/login.js">
     </script>
+
 
 </head>
 <body>
 	<div class="sign-up-box">
         <h1>Create Account Now!!</h1>
+
             <form th:action="@{/signup/processForm}" th:object="${user}"
 						  OnSubmit="return passMatch()" method="POST">
 				<p th:if="${addUserError}" class="error">Already Registered!</p>
@@ -52,19 +55,23 @@
             			<td><label for="street">Street <sup>*</sup></label></td>
 		            	<td><input type="text" name="street" id="street" 
             					   placeholder="Enter street" pattern="[a-zA-Z \.]+" autofocus="autofocus" required></td>
+
             		</tr>
             		<tr>
             			<td><label for="city">City <sup>*</sup></label></td>
             			<td><input type="text" name="city" id="city" 
+
             					   placeholder="Enter city" pattern="[a-zA-Z \.]+" autofocus="autofocus" required></td >
 
             			<td><label for="pinCode">Pincode <sup>*</sup></label></td>
 		            	<td><input type="text" name="pinCode" id="pinCode" 
             					   placeholder="Enter pincode" pattern="^[0-9]{6}$" autofocus="autofocus" required></td>
+
             		</tr>
             		<tr>
             			<td><label for="state">State <sup>*</sup></label></td>
             			<td><input type="text" name="state" id="state" 
+
             					   placeholder="Enter state" pattern="[a-zA-Z \.]+" autofocus="autofocus" required></td>
 
             			<td><label for="country">Country <sup>*</sup></label></td>
@@ -92,6 +99,7 @@
             			<td><input type="checkbox" id="location" onclick="getLocation()"></td>
             			<td> Allow locations</td>
             		</tr>
+
             	</table>
             	<input type="submit" name="submit" value="Sign Up" >
             
@@ -101,7 +109,9 @@
             <br>
             <div class = "sign-in">
             	<p>Already have an account?
+
         		<a th:href="@{/login/showMyLoginPage}">Sign in.</a>
+
         		</p>
         	</div>
         </div>
@@ -109,17 +119,21 @@
         	function passMatch() {
         		var pass = document.getElementById("password").value;
         		var pass1 = document.getElementById("confirm").value;
+
         		var check = document.getElementById("location");
+
         		if(pass!==pass1){
         			alert("Passwords doesn't match");
         			return false;
         		}
+
         		if(check.checked==false) {
         	        document.getElementById('latitude').value='';
         	        document.getElementById('longitude').value='';
         	        alert('Please enable the location');
         	        return false;
         	    }
+
         	}
         </script>
 </body>

@@ -1,5 +1,6 @@
 package com.neeraja.ShareMyOffer.entities;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -64,6 +65,7 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
+
 
 
 }

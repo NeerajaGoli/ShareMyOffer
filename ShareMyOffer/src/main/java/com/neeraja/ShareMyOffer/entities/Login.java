@@ -29,6 +29,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Login {
 	
+
 	@Id
 	@NotNull(message = "is required")
 	@Size(min = 1, message = "is required")
@@ -45,5 +46,6 @@ public class Login {
 	joinColumns = @JoinColumn(name = "username"), 
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
+
 
 }

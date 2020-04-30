@@ -1,11 +1,15 @@
 package com.neeraja.ShareMyOffer.entities;
+
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -13,19 +17,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import lombok.ToString;
 
 @Entity
 @Table(name = "address")
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @ToString
+
 public class Address {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "address_id")
 	private int id;
 	
@@ -65,5 +74,6 @@ public class Address {
 	@Column(name = "longitude")
 	private float longitude;
 	
+
 
 }

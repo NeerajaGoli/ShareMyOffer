@@ -1,5 +1,6 @@
 package com.neeraja.ShareMyOffer.dto;
 
+
 import java.util.List;
 
 import com.neeraja.ShareMyOffer.entities.Role;
@@ -18,5 +19,6 @@ public class LoginDTO {
 	private String password;
 	
 	private List<Role> roles;
+
 	
 }

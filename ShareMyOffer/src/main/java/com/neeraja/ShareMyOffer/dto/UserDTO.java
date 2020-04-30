@@ -1,4 +1,4 @@
-package com.neeraja.ShareMyOffer.dto;
+
 
 import java.util.List;
 
@@ -47,3 +47,4 @@ public class UserDTO {
 	
 	private List<Offer> offers;
 }
+
